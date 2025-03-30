@@ -23,6 +23,7 @@ public class Partita {
 	public Partita() {
 		this.finita = false;
 		this.labirinto = new Labirinto();
+		this.giocatore = new Giocatore();
 		this.stanzaCorrente = labirinto.getStanzaIniziale();
 		this.stanzaVincente = labirinto.getStanzaFinale();
 	}
