@@ -2,23 +2,34 @@ package it.uniroma3.diadia.ambienti;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
+/**
+ * Classe dello studio di caso.
+ * 
+ * Questa � la classe che crea il labirinto definendo numero, nomi e caratteristiche delle stanze (ad esempio gli attrezzi contenuti)
+ * 
+ * e degli attrezzi(nome e peso)
+ * 
+ * @author Xadri
+ *
+ */
 public class Labirinto {
 
-	private Stanza stanzaIniziale;
-	private Stanza stanzaFinale;
+
+	private Stanza stanzaVincente;
+	private Stanza stanzaIngresso;
+	
 
 	public Labirinto() {
-		creaStanze();
+		init();
 	}
-
 	/**
 	 * Crea tutte le stanze e le porte di collegamento
 	 */
-	private void creaStanze() {
+	private void init() {
 
 		/* crea gli attrezzi */
-		Attrezzo lanterna = new Attrezzo("lanterna", 3);
-		Attrezzo osso = new Attrezzo("osso", 1);
+		Attrezzo lanterna = new Attrezzo("lanterna",3);
+		Attrezzo osso = new Attrezzo("osso",1);
 
 		/* crea stanze del labirinto */
 		Stanza atrio = new Stanza("Atrio");
@@ -46,16 +57,23 @@ public class Labirinto {
 		atrio.addAttrezzo(osso);
 
 		// il gioco comincia nell'atrio
-		this.stanzaIniziale = atrio;
-		this.stanzaFinale = biblioteca;
+		stanzaIngresso = atrio;  
+		stanzaVincente = biblioteca;
+	}
+	/**
+	 * 
+	 * @return restituisce la stanza vincente
+	 */
+	public Stanza getStanzaVincente() {
+		return stanzaVincente;
 	}
 
-	public Stanza getStanzaIniziale() {
-		return this.stanzaIniziale;
+	/**
+	 * restituisce la stanza di ingresso
+	 * @return
+	 */
+	public Stanza getStanzaCorrente() {
+			return stanzaIngresso;
+		
 	}
-
-	public Stanza getStanzaFinale() {
-		return this.stanzaFinale;
 	}
-
-}

@@ -20,7 +20,6 @@ public class Comando {
 
     private String nome;
     private String parametro;
-    private int ciaobellii;
 
     public Comando(String istruzione) {
 		Scanner scannerDiParole = new Scanner(istruzione);
@@ -32,7 +31,6 @@ public class Comando {
 		// seconda parola: eventuale parametro
 		if (scannerDiParole.hasNext())
 			this.parametro = scannerDiParole.next();
-		scannerDiParole.close();
     }
 
     public String getNome() {

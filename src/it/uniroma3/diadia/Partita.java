@@ -7,63 +7,54 @@ import it.uniroma3.diadia.giocatore.Giocatore;
 /**
  * Questa classe modella una partita del gioco
  *
- * @author docente di POO
+ * @author  docente di POO
  * @see Stanza
  * @version base
  */
 
 public class Partita {
+	
+	static final private int CFU_INIZIALI = 20;
 
-	private Labirinto labirinto;
 	private Stanza stanzaCorrente;
 	private Stanza stanzaVincente;
-	private Giocatore giocatore;
 	private boolean finita;
-
-	public Partita() {
+	private Labirinto labirinto;
+	private Giocatore giocatore;
+	
+	public Partita(){
+		labirinto= new Labirinto();
 		this.finita = false;
-		this.labirinto = new Labirinto();
-		this.giocatore = new Giocatore();
-		this.stanzaCorrente = labirinto.getStanzaIniziale();
-		this.stanzaVincente = labirinto.getStanzaFinale();
+		stanzaCorrente= labirinto.getStanzaCorrente();
+		stanzaVincente= labirinto.getStanzaVincente();
+		giocatore= new Giocatore();
 	}
 
+    
+	
+	/**
+	 * Restituisce vero se e solo se la partita e' stata vinta
+	 *  
+	 * @return vero se partita vinta
+	 */
+	
+	public boolean vinta() {
+		return this.getStanzaCorrente()== this.getStanzaVincente();
+	}
+	/**
+	 * 
+	 * @return la stanza vincente
+	 */
 	public Stanza getStanzaVincente() {
 		return stanzaVincente;
 	}
 
-	public void setStanzaCorrente(Stanza stanzaCorrente) {
-		this.stanzaCorrente = stanzaCorrente;
-	}
-
-	public Stanza getStanzaCorrente() {
-		return this.stanzaCorrente;
-	}
-
-	public Labirinto getLabirinto() {
-		return labirinto;
-	}
-
-	public Giocatore getGiocatore() {
-		return giocatore;
-	}
-
-	/**
-	 * Restituisce vero se e solo se la partita e' stata vinta
-	 * 
-	 * @return vero se partita vinta
-	 */
-	public boolean vinta() {
-		return this.stanzaCorrente == this.stanzaVincente;
-	}
-
 	/**
 	 * Restituisce vero se e solo se la partita e' finita
-	 * 
 	 * @return vero se partita finita
 	 */
 	public boolean isFinita() {
-		return finita || vinta() || (giocatore.getCfu() == 0);
+		return finita || vinta() || (this.giocatore.getCfu() == 0);
 	}
 
 	/**
@@ -73,5 +64,27 @@ public class Partita {
 	public void setFinita() {
 		this.finita = true;
 	}
-
+/**
+ * 
+ * @return restituisce la stanza corrente
+ */
+	public Stanza getStanzaCorrente() {
+		return stanzaCorrente ;
+	}
+/**
+ * 
+ * @return il giocatore
+ */
+	public Giocatore getGiocatore(){
+		return giocatore;
+	}
+	/**
+	 * aggiorna la stanza corrente con la prossima stanza 
+	 * @param prossimaStanza
+	 */
+	public void setStanzaCorrente(Stanza prossimaStanza) {
+		this.stanzaCorrente=prossimaStanza;
+		
+	}	
 }
+
