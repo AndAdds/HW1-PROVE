@@ -72,6 +72,7 @@ public class DiaDia {
 			if (this.partita.vinta()) {
 				System.out.println("Hai vinto!");
 			}
+			fine();
 			return true;
 		}
 		return false;
