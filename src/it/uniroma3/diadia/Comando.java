@@ -20,6 +20,7 @@ public class Comando {
 
     private String nome;
     private String parametro;
+    private int ciaobellii;
 
     public Comando(String istruzione) {
 		Scanner scannerDiParole = new Scanner(istruzione);
